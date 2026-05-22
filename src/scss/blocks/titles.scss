@@ -1,0 +1,29 @@
+.title {
+  font-family: var(--font-family-secondary);
+  text-transform: uppercase;
+
+  &--h1 {
+    font-size: fluid(60, 36);
+    line-height: 110%;
+  }
+
+  &--h2 {
+    font-size: fluid(54, 36);
+    line-height: 120%;
+
+    @include media(notebook-after) {
+      line-height: 110%;
+    }
+
+  }
+
+  &--h3 {
+    font-size: fluid(36, 28);
+    line-height: 135%;
+
+    span {
+      color: var(--color-primary-600);
+      font-weight: 700;
+    }
+  }
+}

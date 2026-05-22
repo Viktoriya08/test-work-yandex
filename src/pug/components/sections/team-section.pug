@@ -1,0 +1,63 @@
+-
+  var dataTeam = [
+    {
+      name: 'Хозе-Рауль Капабланка',
+      info: 'Чемпион мира по шахматам'
+    },
+    {
+      name: 'Эммануил Ласкер',
+      info: 'Чемпион мира по шахматам'
+    },
+    {
+      name: 'Александр Алехин',
+      info: 'Чемпион мира по шахматам'
+    },
+    {
+      name: 'Арон Нимцович',
+      info: 'Чемпион мира по шахматам'
+    },
+    {
+      name: 'Рихард Рети',
+      info: 'Чемпион мира по шахматам'
+    },
+    {
+      name: 'Остап Бендер',
+      info: 'Гроссмейстер'
+    }
+  ]
+
+mixin team-section(props = {})
+  section.team-section&attributes(attributes)
+    .wrapper.team-section__wrapper
+
+      .team-section__head
+        h2.team-section__title.title.title--h2 Участники турнира
+
+        .team-section__btns
+          button(type="button" aria-label="Предыдущий слайд").team-section__btn.btn-icon.btn-icon--rotate.team-section__btn--prev
+            +icn({name: 'arrow-slider',}).btn-icon__svg
+          .team-section__count
+            span.team-section__count-current 3
+            span.team-section__count-separator  /
+            span.team-section__count-total  6
+          button(type="button" aria-label="Следующий слайд").team-section__btn.btn-icon.team-section__btn--next
+            +icn({name: 'arrow-slider',}).btn-icon__svg
+
+      .team-section__slider-wrap
+        .team-section__viewport
+          .team-section__track
+            //- error - заглушка ставится сразу в разметку, если контент не заполнен, она будет выведена на фронт
+            each item in dataTeam
+              aside.team-section__slide.team-card
+                +pic({
+                  name: 'team-1',
+                  format: 'png',
+                  path: 'team',
+                  lazy: 'lazy',
+                  alt: 'силуэт человека',
+                  error: 'img/team/team.png'
+                  }).team-card__img
+                .team-card__content
+                  h3.team-card__name=item.name
+                  .team-card__info=item.info
+                button(type="button").team-card__btn.btn-mini Подробнее

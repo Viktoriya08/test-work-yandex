@@ -1,0 +1,10 @@
+.footer {
+  background-color: var(--color-primary-400);
+  padding-top: rem(40);
+  padding-bottom: fluid(72, 60);
+
+  &__content {
+    opacity: 0.6;
+    line-height: 120%;
+  }
+}

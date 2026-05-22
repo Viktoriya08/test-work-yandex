@@ -1,0 +1,33 @@
+// Максимальная ширина макета (используется в миксине fluid)
+$page-max-width: 1366;
+
+// Минимальная ширина макета (используется в миксине fluid)
+$page-min-width: 375;
+
+$url-img: '../img/bg';
+$url-font: '/fonts';
+
+
+// Safe font-family
+// $font-Gotham: 'Gotham Pro', sans-serif;
+
+// Font
+// $font-family: $font-Gotham;
+$font-base-size: 16px;
+// $font-base-lh: 1.25;
+
+
+// Media
+$media-fullhd: 1920px;
+$media-quadhd: 1440px;
+$media-hd: 1280px;
+$media-desktop: 1024px;
+$media-notebook: 960px;
+$media-tablet: 768px;
+$media-smartphone: 620px;
+$media-phone: 480px;
+$media-last: 375px;
+
+// Retina
+$retina-dpi: 144dpi;
+$retina-dppx: 1.5dppx;

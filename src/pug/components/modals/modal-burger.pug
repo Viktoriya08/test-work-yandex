@@ -1,0 +1,64 @@
+mixin modal-burger(props = {})
+
+  .modal-menu&attributes(attributes)
+
+    .modal-menu__head
+      a(href="#").logo
+        +pic({name: 'logo', format: 'svg', path: 'content'}).logo__img
+        span.logo__text Российский биотехнологический университет
+
+    .modal-menu__content
+      ul.modal-menu__top.modal-menu__elem
+        each item in dataMenuTop
+          li.modal-menu__item
+            a(href=`${item.href}`).modal-menu__link
+              span.modal-menu__link-text=item.title
+
+      ul.modal-menu__menu.modal-menu__elem
+        each item in dataMenu
+          li.modal-menu__item
+            a(href=`${item.href}`).modal-menu__link
+              span.modal-menu__link-text=item.title
+
+      ul.modal-menu__submenu.submenu.modal-menu__elem
+        each item in submenu
+          li.submenu__item(data-dropdown)
+            a(href="#").submenu__link
+              span.submenu__text=item.title
+              +icn({name: 'arrow', width: '10'}).submenu__svg
+
+            if item.sub === 'submenuSub'
+              ul.submenu__sub
+                each item in submenuSub
+                  li.submenu__item
+                    a(href="#").submenu__link=item.title
+
+            else
+              ul.submenu__sub(data-dropdown)
+                each item in submenuSub2
+                  li.submenu__item
+                    a(href="#").submenu__link=item.title
+
+      .modal-menu__contacts
+        .modal-menu__socials
+          a(href="#" target="_blank" rel="noopener noreferrer").btn.btn--icon.btn--color-neutral
+            +icn({name: 'vk', width: '15'})
+          a(href="#" target="_blank" rel="noopener noreferrer").btn.btn--icon.btn--color-neutral
+            +icn({name: 'tg', width: '15'})
+          a(href="#" target="_blank" rel="noopener noreferrer").btn.btn--icon.btn--color-neutral
+            +icn({name: 'r', width: '15'})
+
+        a(href="tel:+78005503602").btn.btn--color-neutral.modal-menu__phone
+          +icn({name: 'phone', width: '15'}).btn__svg
+          span.btn__text 8 (800) 550-36-02
+
+        button(type="button" aria-label="lang").btn.btn--color-neutral.modal-menu__lang
+          +icn({name: 'lang', width: '18'})
+          span.btn__text RU
+        .modal-menu__theme
+          button(type="button" aria-label="local").btn.btn--color-neutral
+            +icn({name: 'theme-light', width: '18'})
+
+        a(href="#").btn.btn--color-neutral.modal-menu__version
+          +icn({name: 'glasses', width: '18'}).btn__svg
+          span.btn__text версия для слабовидящих

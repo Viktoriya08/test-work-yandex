@@ -1,0 +1,59 @@
+mixin info-section(props = {})
+
+  section.info-section&attributes(attributes)
+    .wrapper.info-section__wrapper
+
+      .info-section__head#anchor-2
+        //-Скрытый H2 для скринридеров и SEO - т.к. текст и смысл заголовка в макете разбит на две части
+        h2.title.title--h3.info-section__main-title Чтобы поддержать Международный васюкинский турнир посетите лекцию на тему: «Плодотворная дебютная идея» и Сеанс одновременной игры в шахматы на 160 досках гроссмейстера О. Бендера
+
+        //- Визуальные элементы для зрячих пользователей
+        .info-section__head-titles
+          .info-section__head-title.title.title--h3(aria-hidden="true") Чтобы поддержать <br> Международный васюкинский турнир
+
+          .info-section__head-title.info-section__head-title--second.title.title--h3(aria-hidden="true") посетите лекцию на тему:
+            span  «Плодотворная дебютная идея»
+
+        +pic({
+        name: 'info-head',
+        format: 'webp',
+        path: 'content',
+        lazy: 'lazy',
+        alt: 'люди играют в шахматы',
+        }).info-section__mask-picture
+
+      .info-section__body
+        +pic({
+          name: 'info',
+          format: 'webp',
+          path: 'content',
+          lazy: 'lazy',
+          alt: 'люди играют в шахматы',
+          }).info-section__picture
+
+        .info-section__box
+
+          .info-section__title.title.title--h3(aria-hidden="true") и Сеанс
+            span  одновременной игры в шахматы на 160
+            |  досках гроссмейстера О. Бендера
+
+          dl.info-section__list.info-list
+            .info-list__box
+              dt.info-list__dt Место проведения:
+              dd.info-list__dd Клуб «Картонажник»
+            .info-list__box
+              dt.info-list__dt Дата и время мероприятия:
+              dd.info-list__dd 22 июня 1927 г. в 18:00
+            .info-list__box
+              dt.info-list__dt Стоимость входных билетов:
+              dd.info-list__dd 20 коп.
+            .info-list__box
+              dt.info-list__dt Плата за игру:
+              dd.info-list__dd 50 коп.
+            .info-list__box
+              dt.info-list__dt Взнос на телеграммы:
+              dd.info-list__dd
+                span 100 руб.
+                |  21 руб. 16 коп.
+
+          .info-section__text По всем вопросам обращаться в администрацию к К. Михельсону

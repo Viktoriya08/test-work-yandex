@@ -1,0 +1,97 @@
+.swiper-wrapper {
+  position: relative;
+  width: 100%;
+  height: auto;
+  z-index: 1;
+  display: flex;
+  transition-property: transform;
+  transition-timing-function: var(--swiper-wrapper-transition-timing-function, initial);
+  box-sizing: content-box;
+}
+
+.swiper-slide {
+  flex-shrink: 0;
+  width: 100%;
+  height: auto;
+  position: relative;
+  transition-property: transform;
+  display: block;
+}
+
+.default-slider {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: rem(16);
+
+  &:not(:last-child) {
+    margin-bottom: rem(80);
+  }
+
+  @include media(notebook-after) {
+    padding-left: var(--main-padding);
+    padding-right: var(--main-padding);
+    margin-left: calc(var(--main-padding) * -1);
+    margin-right: calc(var(--main-padding) * -1);
+
+    &:not(:last-child) {
+      margin-bottom: rem(56);
+    }
+  }
+
+  @include media(tablet-after) {
+
+    &:not(:last-child) {
+      margin-bottom: rem(32);
+    }
+  }
+
+  &__btns {
+    order: -1;
+    margin: 1px 1px 1px auto;
+    display: flex;
+    align-items: center;
+    gap: rem(10);
+
+    @include media(notebook-after) {
+      display: none;
+    }
+  }
+
+  &__btn {
+    color: var(--color-primary-500);
+    width: rem(24);
+    height: rem(24);
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    &:focus {
+      outline: 1px solid var(--color-primary-400);
+    }
+
+    &:focus-visible {
+      color: var(--color-primary-400);
+    }
+
+    @include media(hover) {
+      &:hover:not(:where(:disabled, .is-disabled)) {
+        color: var(--color-primary-400);
+      }
+    }
+
+    &:active,
+    &.is-active {
+      outline: 1px solid var(--color-primary-400);
+      color: var(--color-primary-600);
+    }
+
+    &[disabled],
+    &.is-disabled {
+
+      pointer-events: none;
+      opacity: 0.6;
+    }
+  }
+}

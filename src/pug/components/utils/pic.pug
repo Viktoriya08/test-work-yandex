@@ -1,0 +1,48 @@
+mixin pic(props = {})
+  -
+    const path = props.path || ''
+    const name = props.name || ''
+    const format = props.format || 'jpg'
+    const sources = props.sources || []
+    const errorImg = props.error || ''
+
+  picture&attributes(attributes)
+    each source in sources
+      - const srcFormat = source.format || format
+      if srcFormat !== 'svg'
+        // Генерируем WEBP-альтернативу ДЛЯ ТЕКУЩЕГО адаптивного источника
+        source(
+          type="image/webp"
+          media=source.media
+          srcset=`img/${path}/${source.name}.webp, img/${path}/${source.name}@2x.webp 2x`
+        )
+        // Генерируем исходный формат (png/jpg) ДЛЯ ТЕКУЩЕГО адаптивного источника
+        source(
+          type=`image/${srcFormat === 'jpg' ? 'jpeg' : srcFormat}`
+          media=source.media
+          srcset=`img/${path}/${source.name}.${srcFormat}, img/${path}/${source.name}@2x.${srcFormat} 2x`
+        )
+      else
+        // Если адаптивный источник — SVG
+        source(
+          type="image/svg+xml"
+          media=source.media
+          srcset=`img/${path}/${source.name}.svg`
+        )
+
+    if format !== 'svg'
+      source(
+        type="image/webp"
+        srcset=`img/${path}/${name}.webp, img/${path}/${name}@2x.webp 2x`
+      )
+
+    img(
+      src=`img/${path}/${name}.${format}`
+      srcset=format === 'svg' ? false : `img/${path}/${name}@2x.${format} 2x`
+      width=props.width
+      height=props.height
+      alt=props.alt || ''
+      class=props.imgClass
+      loading=props.lazy ? 'lazy' : false
+      onerror="this.onerror=null;this.src='" + errorImg + "';"
+    )

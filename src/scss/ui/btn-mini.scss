@@ -1,0 +1,56 @@
+.btn-mini {
+  padding: rem(12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-primary-700);
+  border-radius: var(--radius-m);
+  color: var(--color-primary-700);
+  font-weight: 500;
+  transition: color .3s ease, background-color .3s ease;
+
+  cursor: pointer;
+
+   // states
+
+  &:focus:not([disabled]) {
+    outline: 1px solid var(--color-primary-500);
+  }
+
+  &:focus-visible {
+    background-color: var(--color-primary-700);
+    color: var(--color-white);
+  }
+
+  @include media(hover) {
+    &:hover:not(:where(:disabled, .is-disabled)) {
+      background-color: var(--color-primary-700);
+      color: var(--color-white);
+      cursor: pointer;
+    }
+  }
+
+  &:active:not([disabled]),
+  &.is-active:not([disabled]) {
+    outline: 1px solid var(--color-primary-500);
+    background-color: var(--color-primary-700);
+    color: var(--color-white);
+  }
+
+  &:disabled,
+  &.is-disabled {
+
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  &[disabled] {
+    opacity: 0.6;
+    pointer-events: none;
+
+    &:focus-visible {
+      outline: none;
+      background-color: var(--color-primary-700);
+    }
+  }
+}

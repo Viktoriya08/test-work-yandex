@@ -1,0 +1,7 @@
+mixin title-block(props = {})
+
+  .title-block&attributes(attributes)
+    if props.title
+      h2.title-block__title!=props.title
+
+    p.title-block__info.title.title--h1!=props.text

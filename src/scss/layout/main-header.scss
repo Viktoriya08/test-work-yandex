@@ -1,0 +1,17 @@
+.main-header {
+  padding: fluid(26, 18) 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-index-header);
+
+  &__logo {
+    display: block;
+    width: fit-content;
+  }
+
+  &__img {
+    object-fit: contain;
+  }
+}

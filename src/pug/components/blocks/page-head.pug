@@ -1,0 +1,12 @@
+mixin page-head(props = {})
+
+  section.page-head&attributes(attributes)
+    .wrapper
+
+      h1.page-head__title.title.title--h1=props.title
+
+      ol.page-head__nav.breadcrumbs
+        li.breadcrumbs__item
+          a(href="#").breadcrumbs__link Главная
+        li.breadcrumbs__item
+          span.breadcrumbs__link=props.bread

@@ -1,0 +1,82 @@
+.team-section {
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: fluid(60, 40);
+  }
+
+  &__slider-wrap {
+    display: flex;
+  }
+
+  &__viewport {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  &__track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    will-change: transform;
+  }
+
+  &__slide {
+    flex: 0 0 33.333%; /* Измените процент, если на экране должно быть другое число карточек */
+    box-sizing: border-box;
+  }
+
+  &__head {
+    display: flex;
+    align-items: center;
+    gap: rem(14);
+  }
+
+  &__btns {
+    display: flex;
+    gap: rem(14);
+    align-items: center;
+    margin-left: auto;
+  }
+
+  &__count {
+    display: flex;
+    align-items: center;
+    gap: rem(1);
+
+    &-current {
+      min-width: rem(12);
+    }
+    &-separator,
+    &-total {
+      opacity: 0.6;
+      min-width: rem(12);
+    }
+  }
+
+  @include media(notebook-after) {
+    &__slide {
+      flex: 0 0 50%;
+    }
+
+    &__slider-wrap {
+      margin-left: calc(var(--main-padding) * -1);
+      margin-right: calc(var(--main-padding) * -1);
+    }
+
+    &__head {
+      display: contents;
+    }
+
+    &__btns {
+      order: 2;
+      margin: 0 auto;
+    }
+  }
+
+  @include media(tablet-after) {
+    &__slide {
+      flex: 0 0 100%;
+    }
+  }
+}

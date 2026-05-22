@@ -1,0 +1,8 @@
+.base-section {
+  padding-bottom: fluid(120, 72);
+  padding-top: fluid(80, 48);
+
+  &:last-of-type {
+    padding-bottom: fluid(135, 100);
+  }
+}

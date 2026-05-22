@@ -1,0 +1,62 @@
+{
+  "name": "test-vite-template",
+  "version": "1.1.0",
+  "private": true,
+  "type": "module",
+  "browserslist": [
+    "last 3 versions",
+    "Firefox ESR",
+    "not dead"
+  ],
+  "editorconfig-cli": [
+    "*.json",
+    "src/pug/**/*.pug",
+    "src/js/**/*.{js,ts}",
+    "src/scss/**/*.scss"
+  ],
+  "scripts": {
+    "start": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint:scss": "./node_modules/.bin/stylelint \"src/scss/**/*.scss\" --customSyntax postcss-scss",
+    "lint:ts": "./node_modules/.bin/cross-env NODE_ENV=console eslint \"src/js/**/*.ts\"",
+    "lint:pug": "./node_modules/.bin/pug-lint \"src/pug/\"",
+    "editorconfig": "./node_modules/.bin/editorconfig-cli",
+    "test": "npm run editorconfig & npm run lint:pug & npm run lint:scss"
+  },
+  "devDependencies": {
+    "@htmlacademy/editorconfig-cli": "3.0.0",
+    "@typescript-eslint/eslint-plugin": "8.13.0",
+    "@typescript-eslint/parser": "8.13.0",
+    "@vheemstra/vite-plugin-imagemin": "^2.0.0",
+    "@vituum/vite-plugin-pug": "^1.1.0",
+    "autoprefixer": "^10.4.19",
+    "cross-env": "^7.0.3",
+    "eslint": "9.14.0",
+    "eslint-config-htmlacademy": "10.0.1",
+    "glob": "11.0.0",
+    "imagemin-mozjpeg": "^10.0.0",
+    "imagemin-pngquant": "^10.0.0",
+    "imagemin-svgo": "^11.0.1",
+    "imagemin-webp": "~6.1.0",
+    "postcss": "^8.5.3",
+    "postcss-will-change": "^4.0.1",
+    "pug-lint": "2.7.0",
+    "sass": "1.79.6",
+    "stylelint": "^15.11.0",
+    "stylelint-config-htmlacademy": "^2.0.6",
+    "typescript": "^5.2.2",
+    "vite": "^5.3.4",
+    "vite-plugin-sass-glob-import": "^3.0.2",
+    "vite-plugin-svg-spritemap": "^1.0.1",
+    "vituum": "^1"
+  },
+  "dependencies": {
+    "hystmodal": "^1.*",
+    "imask": "^7.*",
+    "inputmask": "^5.0.9",
+    "js-cookie": "^3.*",
+    "just-validate": "^4.*",
+    "swiper": "^11.*"
+  }
+}

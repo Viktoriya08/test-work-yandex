@@ -1,0 +1,9 @@
+mixin card(props = {})
+
+  article.card&attributes(attributes)
+
+    .card__img
+      block
+
+    h3.card__title=props.title
+    p.card__text=props.text

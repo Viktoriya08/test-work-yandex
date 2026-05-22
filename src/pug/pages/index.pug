@@ -1,0 +1,52 @@
+extends ../components/layouts/main-layout
+
+block variables
+  -
+    title = 'Главная'
+
+  -
+    const faq = [
+      {
+        title: 'Полноценная безопасность приложений',
+        text: 'Всесторонний контроль безопасности ПО основными видами анализа кода (SAST, DAST, SCA, SCS) в одном решении',
+      },
+      {
+        title: 'Работает даже без исходного кода',
+        text: 'Возможность анализа бинарного кода, проверки мобильных приложений по ссылке в App Store или Google Play и готовых веб-приложений',
+      },
+      {
+        title: 'Сертифицированная российская разработка',
+        text: 'Solar appScreener cертифицирован ФСТЭК России, внесен в Единый реестр отечественного ПО, соответствует требованиям ОУД4 и подходит для импортозамещения.',
+      },
+      {
+        title: 'Мировой лидер по числу языков программирования',
+        text: 'Поддержка 36 языков программирования, 10 форматов исполняемых файлов и программ-полиглотов',
+      }
+    ]
+
+block main
+  header.main-header
+    .wrapper
+      nav.main-header__nav
+        a(href="/" title="Клуб четырех коней").main-header__logo
+          +img({format: 'svg', name: 'logo', path: 'logo', alt: 'логотип - Клуб четырех коней'}).main-header__img
+  main.page
+
+    +hero-section({title: 'Превратите уездный город <span>в столицу</span> <span>земного шара</span>', text:'<span>Оплатите взнос на телеграммы для организации</span> <span>Международного васюкинского турнира по шахматам</span>'})
+
+    +marquee()
+
+    +info-section.base-section()
+
+    +steps-section.base-section()
+
+    +team-section.base-section()
+
+    +marquee()
+
+    //.fadeInRight .fadeInLeft
+
+block modals
+
+  //- +modal({id: 'modal-burger', mod: 'burger'})
+  //-   +modal-burger()

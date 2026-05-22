@@ -1,0 +1,56 @@
+p:not([class]) {
+  font-size: rem(16);
+  line-height: rem(22);
+
+  &:not(:last-child) {
+    margin-bottom: rem(20);
+  }
+
+}
+
+h2:not([class]), h3:not([class]), h4:not([class]), h5:not([class]), h6:not([class]) {
+  font-weight: 600;
+  line-height: normal;
+  text-wrap: balance;
+  line-height: 1.1;
+
+  &:not(:last-child) {
+    margin-bottom: fluid(50, 25);
+  }
+
+  &:not(:first-child) {
+    margin-top: fluid(50, 25);
+  }
+}
+
+h2:not([class]) {
+  font-size: fluid(40, 20);
+}
+
+a:not([class]) {
+  color: var(--color-primary-500);
+
+  &:active,
+  &.is-active,
+  &:focus,
+  &:focus-visible {
+    outline: 1px solid var(--color-primary-600);
+  }
+
+  @include media(hover) {
+    &:hover {
+      color: var(--color-primary-600);
+    }
+  }
+
+  @include media(tablet-after){
+    &:hover {
+      &:active,
+      &.is-active,
+      &:focus,
+      &:focus-visible {
+        outline: none;
+      }
+    }
+  }
+}

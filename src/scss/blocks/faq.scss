@@ -1,0 +1,109 @@
+.faq {
+
+  &:not(:last-child) {
+    margin-bottom: rem(43);
+    border-bottom: 1px solid var(--color-neutral-500);
+    padding-bottom: rem(16);
+
+    @include media(notebook-after) {
+      margin-bottom: rem(24);
+    }
+
+    @include media(tablet-after) {
+      margin-bottom: rem(24);
+    }
+  }
+
+  &__content {
+    overflow: hidden;
+    height: 0;
+    transition: height 0.3s ease-out;
+
+    &-box {
+      padding-top: rem(24);
+      padding-bottom: rem(8);
+      opacity: 0;
+      transition: opacity 1s;
+
+      .active & {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__btn {
+    width: rem(36);
+    height: rem(36);
+    border-radius: var(--radius-50);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary-500);
+    border: 1px solid var(--color-primary-500);
+    flex: none;
+    transition: transform 0.3s ease;
+
+    .active & {
+      transform: rotate(45deg);
+    }
+
+    &:focus {
+      outline: 1px solid var(--color-primary-600);
+    }
+
+    &:focus-visible {
+      color: var(--color-primary-600);
+    }
+
+    &:hover:not(:disabled),
+    &:hover:not(.is-disabled) {
+      color: var(--color-primary-600);
+      cursor: pointer;
+    }
+
+    &:active,
+    &.is-active {
+      outline: 1px solid var(--color-primary-600);
+      color: var(--color-primary-600);
+    }
+
+    &:disabled,
+    &.is-disabled {
+      color: var(--color-neutral-500);
+
+      pointer-events: none;
+      opacity: 0.7;
+    }
+
+    @include media(tablet-after){
+      &:hover {
+        &:active,
+        &.is-active,
+        &:focus,
+        &:focus-visible {
+          outline: none;
+        }
+      }
+    }
+  }
+
+  &__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: rem(16);
+    cursor: pointer;
+    transition: color 0.3s;
+
+    &:has(.faq__btn[disabled]) {
+      pointer-events: none;
+      color: var(--color-neutral-500);
+    }
+
+    @include media(hover) {
+      &:hover {
+        color: var(--color-primary-500);
+      }
+    }
+  }
+}

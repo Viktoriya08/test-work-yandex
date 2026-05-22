@@ -1,0 +1,46 @@
+.marquee {
+  background-color: var(--color-primary-600);
+  padding: fluid(18, 10) 0;
+  overflow: hidden;
+  display: flex;
+  gap: rem(12);
+  white-space: nowrap;
+  color: var(--color-white);
+
+  &__inner {
+    font-size: fluid(22, 16);
+    line-height: 110%;
+    text-transform: uppercase;
+    display: flex;
+    width: fit-content;
+    animation: marquee-animation 20s linear infinite;
+  }
+
+  &__box {
+    display: flex;
+    gap: rem(12);
+    flex-shrink: 0;
+    padding-left: rem(12);
+  }
+
+  span {
+    display: flex;
+    gap: rem(12);
+    align-items: center;
+
+    &::after {
+    content: '';
+    width: rem(6);
+    height: rem(6);
+    border-radius: var(--radius-50);
+    background-color: var(--color-white);
+  }
+  }
+
+  @include media(hover) {
+    &:hover &__inner {
+      animation-play-state: paused;
+    }
+  }
+
+}

@@ -1,0 +1,28 @@
+extends ../components/layouts/main-layout
+
+block variables
+  -
+    title = 'Список страниц'
+    hasFooter = false
+    hasHeader = false
+    const pages = [
+      {
+        name: 'Главная',
+        src: 'index'
+      },
+    ]
+
+block main
+  style
+    include ../styles/sitemap.css
+
+  main.container
+    .wrapper-logo
+      .logo
+        img(src="/img/content/logo.svg" alt="").logo__img
+    .wrapper
+      h1.fadeInUp.title.title--fluid Тестовое задание Гнездиловой Виктории
+      ol
+        each page in pages
+          li.fadeInRight
+            a(href=`${page.src}.html`)= `${page.name} - ${page.src}.html`

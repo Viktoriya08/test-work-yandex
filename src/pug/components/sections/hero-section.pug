@@ -1,0 +1,31 @@
+mixin hero-section(props = {})
+
+  section.hero-section&attributes(attributes)
+    .hero-section__bg(style="background-image: url(/img/hero/hero-bg.png);")
+    .wrapper.hero-section__wrapper
+
+      .hero-section__content
+        h1.hero-section__title.title.title--h1!=props.title
+
+        .hero-section__text
+          p!=props.text
+
+        .hero-section__btns
+          +btn({href: '#anchor-1'}).hero-section__btn
+            span Поддержать шахматную мысль
+          +btn({var: 'btn--color-transparent', href: '#anchor-2'}).hero-section__btn
+            span Подробнее о турнире
+
+      +pic({
+        name: 'hero',
+        format: 'webp',
+        path: 'hero',
+        lazy: 'lazy',
+        alt: 'Шахматная доска, город, солнце',
+        error: 'img/hero/hero.png',
+        sources: [
+          {
+          name: 'hero-mob',
+          format: 'webp',
+          media: `(max-width:${MEDIA.notebook}px)`},
+        ]}).hero-section__picture

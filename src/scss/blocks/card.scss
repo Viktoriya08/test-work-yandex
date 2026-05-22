@@ -1,0 +1,233 @@
+.card {
+  background-color: var(--color-neutral-200);
+  padding: rem(24);
+  padding-bottom: rem(21);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: rem(12);
+  text-align: center;
+  height: 100%;
+
+  @include media(tablet-after) {
+    padding: rem(16) rem(9) rem(22);
+    gap: rem(8);
+  }
+
+  &__img {
+    width: rem(210);
+    height: rem(155);
+    display: block;
+    margin-bottom: rem(12);
+
+    #card-1_left {
+      animation: shake-2 1.5s linear 0s infinite normal forwards;
+      animation-play-state: paused;
+    }
+
+    #card-1_right {
+      animation: shake-3 1.5s linear 0s infinite normal forwards;
+      animation-play-state: paused;
+    }
+
+    #card-2_left {
+      animation: shake 1.5s linear 0s infinite reverse forwards;
+      animation-play-state: paused;
+    }
+
+    #card-2_right {
+      animation: shake 1.5s linear 0s infinite normal forwards;
+      animation-play-state: paused;
+    }
+
+    #card-2_top {
+      animation: bounce 1.5s linear 0s infinite normal forwards;
+      animation-play-state: paused;
+    }
+
+    #card-3_circle {
+      animation: shake-long 1.5s linear 0s infinite normal forwards;
+      animation-play-state: paused;
+    }
+
+    #card-4_arrow {
+      animation: pulse 1.5s linear 0s infinite normal forwards;
+      animation-play-state: paused;
+    }
+
+    #card-5_top {
+      animation: bounce 1.5s linear 0s infinite normal forwards;
+      animation-play-state: paused;
+    }
+
+    #card-5_down {
+      animation: bounce 1.5s linear 0s infinite reverse forwards;
+      animation-play-state: paused;
+    }
+
+    #card-5_left {
+      animation: shake 1.5s linear 0s infinite reverse forwards;
+      animation-play-state: paused;
+    }
+
+    #card-5_right {
+      animation: shake 1.5s linear 0s infinite normal forwards;
+      animation-play-state: paused;
+    }
+
+    #card-6 {
+      animation: rotate 1.5s linear 0s infinite normal forwards;
+      animation-play-state: paused;
+      transform-origin: 40% 100%;
+    }
+
+    svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+      max-width: 100%;
+      transition: transform 0.3s;
+    }
+
+    @include media(tablet-after) {
+      height: rem(100);
+      margin-bottom: rem(8);
+    }
+  }
+
+  &__title {
+    font-size: rem(22);
+    line-height: rem(28);
+
+    @include media(tablet-after) {
+      font-size: rem(18);
+      line-height: rem(24);
+    }
+  }
+
+  &__text {
+    font-size: rem(18);
+    line-height: rem(24);
+
+    @include media(tablet-after) {
+      font-size: rem(16);
+      line-height: rem(20);
+    }
+  }
+
+  @include media(hover) {
+    &:hover {
+      #card-1_left,
+      #card-1_right,
+      #card-2_left,
+      #card-2_right,
+      #card-2_top,
+      #card-3_circle,
+      #card-4_arrow,
+      #card-5_top,
+      #card-5_down,
+      #card-5_right,
+      #card-5_left,
+      #card-6 {
+        animation-play-state: running;
+      }
+    }
+  }
+}
+
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-4px);
+  }
+  75% {
+    transform: translateX(4px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes shake-2 {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-4px);
+  }
+  75% {
+    transform: translateX(10px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes shake-3 {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(4px);
+  }
+  75% {
+    transform: translateX(-10px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes shake-mini {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(4px);
+  }
+  75% {
+    transform: translateX(-4px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes shake-long {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-65px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes bounce {
+  0% { transform: translateY(0); }
+  25% { transform: translateY(4px); }
+  75% { transform: translateY(-4px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg) translateX(0) translateY(0); }
+  25% { transform: rotate(25deg) translateX(-10px) translateY(8px); }
+  50% { transform: rotate(0deg) translateX(0) translateY(0); }
+  75% { transform: rotate(-25deg) translateX(10px) translateY(-5px); }
+  100% { transform: rotate(0deg) translateX(0) translateY(0); }
+}

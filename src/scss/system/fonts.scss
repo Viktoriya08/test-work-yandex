@@ -1,0 +1,49 @@
+@font-face {
+  font-family: 'Golos Text';
+  src:
+    url('#{$url-font}/Golos/GolosText-Regular.woff2') format('woff2'),
+    url('#{$url-font}/Golos/GolosText-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Golos Text';
+  src:
+    url('#{$url-font}/Golos/GolosText-Medium.woff2') format('woff2'),
+    url('#{$url-font}/Golos/GolosText-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Golos Text';
+  src:
+    url('#{$url-font}/Golos/GolosText-SemiBold.woff2') format('woff2'),
+    url('#{$url-font}/Golos/GolosText-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Merriweather';
+  src:
+    url('#{$url-font}/Merriweather/Merriweather_24pt-Regular.woff2') format('woff2'),
+    url('#{$url-font}/Merriweather/Merriweather_24pt-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Merriweather';
+  src:
+    url('#{$url-font}/Merriweather/Merriweather_24pt-Bold.woff2') format('woff2'),
+    url('#{$url-font}/Merriweather/Merriweather_24pt-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
