@@ -40,13 +40,13 @@
 
   &__mask-picture {
     grid-column: 9/-1;
-    -webkit-mask-image: url('../../img/content/mask.svg');
-    mask-image: url('../../img/content/mask.svg');
+    -webkit-mask-image: url('/img/content/mask.svg');
+    mask-image: url('/img/content/mask.svg');
     -webkit-mask-size: 100% 100%;
     mask-size: 100% 100%;
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
-    background-image: url('../../img/bg/bg.png');
+    background-image: url('/img/bg/bg.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -82,13 +82,13 @@
       content: "";
       position: absolute;
       inset: 0;
-      background-image: url('../../img/bg/bg.png');
+      background-image: url('/img/bg/bg.png');
       background-size: cover;
       background-position: center;
       mix-blend-mode: color-burn;
       pointer-events: none;
-      -webkit-mask-image: url('../../img/content/info.webp');
-      mask-image: url('../../img/content/info.webp');
+      -webkit-mask-image: url('/img/content/info.webp');
+      mask-image: url('/img/content/info.webp');
       -webkit-mask-size: contain;
       mask-size: contain;
       -webkit-mask-repeat: no-repeat;

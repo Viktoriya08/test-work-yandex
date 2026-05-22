@@ -40,7 +40,7 @@
     gap: rem(16);
     grid-column: span 4;
     padding: rem(20);
-    background-image: url(../../img/bg/bg-3.jpg);
+    background-image: url('/img/bg/bg-3.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -111,7 +111,7 @@
 
     &__slide {
       padding: rem(62) rem(20) rem(34);
-      background-image: url(../../img/bg/bg-3.jpg);
+      background-image: url('/img/bg/bg-3.jpg');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;

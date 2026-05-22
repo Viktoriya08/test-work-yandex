@@ -75,7 +75,12 @@ const disableWebp = () => {
 
 export default defineConfig(() => {
   return {
-    base: './',
+    // Важно! public папка по умолчанию уже работает
+    publicDir: 'public', // Это значение по умолчанию
+
+    // Для правильных путей в сборке
+    base: './', // или '/' если будете хостить в корне
+
     css: {
       devSourcemap: true,
       preprocessorOptions: {
