@@ -206,7 +206,7 @@
     }
   }
 
-  @else if $media ==  {
+  @else if $media == hd-after {
     @media only screen and (max-width: calc(#{rem($media-hd - 1px)})) {
       @content;
     }

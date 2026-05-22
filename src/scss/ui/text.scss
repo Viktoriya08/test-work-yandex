@@ -28,7 +28,8 @@ h2:not([class]) {
 }
 
 a:not([class]) {
-  color: var(--color-primary-500);
+  color: var(--color-primary-600);
+  transition: color 0.3s;
 
   &:active,
   &.is-active,
@@ -39,7 +40,7 @@ a:not([class]) {
 
   @include media(hover) {
     &:hover {
-      color: var(--color-primary-600);
+      color: var(--color-primary-500);
     }
   }
 

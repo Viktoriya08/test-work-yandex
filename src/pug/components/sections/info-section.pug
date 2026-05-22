@@ -8,7 +8,7 @@ mixin info-section(props = {})
         h2.title.title--h3.info-section__main-title Чтобы поддержать Международный васюкинский турнир посетите лекцию на тему: «Плодотворная дебютная идея» и Сеанс одновременной игры в шахматы на 160 досках гроссмейстера О. Бендера
 
         //- Визуальные элементы для зрячих пользователей
-        .info-section__head-titles
+        .info-section__head-titles.fadeInRight
           .info-section__head-title.title.title--h3(aria-hidden="true") Чтобы поддержать <br> Международный васюкинский турнир
 
           .info-section__head-title.info-section__head-title--second.title.title--h3(aria-hidden="true") посетите лекцию на тему:
@@ -20,7 +20,7 @@ mixin info-section(props = {})
         path: 'content',
         lazy: 'lazy',
         alt: 'люди играют в шахматы',
-        }).info-section__mask-picture
+        }).info-section__mask-picture.fadeInUp
 
       .info-section__body
         +pic({
@@ -29,9 +29,9 @@ mixin info-section(props = {})
           path: 'content',
           lazy: 'lazy',
           alt: 'люди играют в шахматы',
-          }).info-section__picture
+          }).info-section__picture.fadeInUp
 
-        .info-section__box
+        .info-section__box.fadeInLeft
 
           .info-section__title.title.title--h3(aria-hidden="true") и Сеанс
             span  одновременной игры в шахматы на 160
