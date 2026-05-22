@@ -79,7 +79,7 @@
     transform: translate3d(0, 0, 0);
   }
   100% {
-    transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-50%, 0, 0);
   }
 }
 /* stylelint-disable declaration-no-important */
@@ -419,6 +419,7 @@ select:-webkit-autofill:focus {
   --color-primary-600: #F54932;
   --color-primary-700: #3057A2;
   --color-primary-800: #1F1F1F;
+  --color-primary-900: #424241;
   --color-neutral-200: #F1EDEB;
   --color-neutral-300: #D5D6D8;
   --color-neutral-400: #D9D9D9;
@@ -953,14 +954,15 @@ h2:not([class]) {
   font-size: clamp(1.25rem, 0.7769929364rem + 2.0181634712vw, 2.5rem);
 }
 a:not([class]) {
-  color: var(--color-primary-500);
+  color: var(--color-primary-600);
+  transition: color 0.3s;
 }
 a:not([class]):active, a:not([class]).is-active, a:not([class]):focus, a:not([class]):focus-visible {
   outline: 1px solid var(--color-primary-600);
 }
 @media (hover: hover) {
   a:not([class]):hover {
-    color: var(--color-primary-600);
+    color: var(--color-primary-500);
   }
 }
 @media only screen and (max-width: calc(47.9375rem)) {
@@ -1411,19 +1413,19 @@ a:not([class]):active, a:not([class]).is-active, a:not([class]):focus, a:not([cl
   color: var(--color-white);
 }
 .marquee__inner {
-  display: flex;
-  gap: 0.75rem;
-  min-width: 100%;
-  animation: marquee-animation 25s linear infinite;
   font-size: clamp(1rem, 0.8580978809rem + 0.6054490414vw, 1.375rem);
   line-height: 110%;
   text-transform: uppercase;
+  display: flex;
+  width: -moz-fit-content;
+  width: fit-content;
+  animation: marquee-animation 20s linear infinite;
 }
 .marquee__box {
   display: flex;
   gap: 0.75rem;
   flex-shrink: 0;
-  min-width: 100%;
+  padding-left: 0.75rem;
 }
 .marquee span {
   display: flex;
@@ -1465,11 +1467,21 @@ a:not([class]):active, a:not([class]).is-active, a:not([class]):focus, a:not([cl
 }
 .team-card__img {
   margin-bottom: 0.5rem;
+  width: 20rem;
+  aspect-ratio: 1;
+  border-radius: var(--radius-50);
+  overflow: hidden;
+  background-color: var(--color-primary-900);
+  background-image: url("../../img/bg/bg-2.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 1.25rem 0.875rem 0;
 }
 .team-card__img img {
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 .title {
   font-family: var(--font-family-secondary);
@@ -1784,6 +1796,9 @@ a:not([class]):active, a:not([class]).is-active, a:not([class]):focus, a:not([cl
   font-size: clamp(1.125rem, 1.0776992936rem + 0.2018163471vw, 1.25rem);
   line-height: 120%;
   color: var(--color-primary-700);
+}
+.steps-section {
+  /* Убираем div-обёртку из потока, чтобы li участвовали в грид-сетке напрямую */
 }
 .steps-section__head {
   max-width: 50.375rem;
