@@ -117,38 +117,50 @@ function initTeamSlider(burgerClass, menuClass) {
   const countTotal = document.querySelector(".team-section__count-total");
   if (!track || slides.length === 0) return;
   const totalOriginalSlides = slides.length;
-  const maxSlidesPerView = 3;
-  let slidesPerView = 3;
-  let currentIndex = maxSlidesPerView;
+  let slidesPerView = getSlidesPerView();
+  let clonesCount = slidesPerView;
+  let currentIndex = clonesCount;
   let autoPlayTimer = null;
   let isTransitioning = false;
+  let allSlides = [];
   if (countTotal) countTotal.textContent = totalOriginalSlides;
-  for (let i = 0; i < maxSlidesPerView; i++) {
-    track.appendChild(slides[i].cloneNode(true));
-  }
-  for (let i = totalOriginalSlides - 1; i >= totalOriginalSlides - maxSlidesPerView; i--) {
-    track.insertBefore(slides[i].cloneNode(true), track.firstChild);
-  }
-  const allSlides = document.querySelectorAll(".team-section__slide");
-  function updateBreakpoints() {
+  function getSlidesPerView() {
     const width = window.innerWidth;
-    const oldSlidesPerView = slidesPerView;
-    if (width <= 768) {
-      slidesPerView = 1;
-    } else if (width <= 960) {
-      slidesPerView = 2;
-    } else {
-      slidesPerView = 3;
+    if (width <= 768) return 1;
+    if (width <= 960) return 2;
+    return 3;
+  }
+  function rebuildSlider() {
+    while (track.firstChild) {
+      track.removeChild(track.firstChild);
     }
-    if (oldSlidesPerView !== slidesPerView) {
-      track.style.transition = "none";
-      const slideWidth = 100 / slidesPerView;
-      track.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
-      updateCounter();
+    slides.forEach((slide) => track.appendChild(slide.cloneNode(true)));
+    const freshSlides = document.querySelectorAll(".team-section__slide");
+    const totalFresh = freshSlides.length;
+    for (let i = 0; i < clonesCount; i++) {
+      const clone = freshSlides[i % totalFresh].cloneNode(true);
+      track.appendChild(clone);
+    }
+    for (let i = 0; i < clonesCount; i++) {
+      const cloneIndex = (totalFresh - 1 - i % totalFresh + totalFresh) % totalFresh;
+      const clone = freshSlides[cloneIndex].cloneNode(true);
+      track.insertBefore(clone, track.firstChild);
+    }
+    allSlides = document.querySelectorAll(".team-section__slide");
+    const slideWidth = 100 / slidesPerView;
+    currentIndex = clonesCount;
+    track.style.transition = "none";
+    track.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
+    updateCounter();
+  }
+  function updateBreakpoints() {
+    const newSlidesPerView = getSlidesPerView();
+    if (newSlidesPerView !== slidesPerView) {
+      slidesPerView = newSlidesPerView;
+      clonesCount = slidesPerView;
+      rebuildSlider();
     }
   }
-  updateBreakpoints();
-  window.addEventListener("resize", updateBreakpoints);
   function moveSlider(index) {
     if (isTransitioning) return;
     isTransitioning = true;
@@ -160,7 +172,7 @@ function initTeamSlider(burgerClass, menuClass) {
   }
   function updateCounter() {
     if (!countCurrent) return;
-    let virtualIndex = (currentIndex - maxSlidesPerView) % totalOriginalSlides;
+    let virtualIndex = (currentIndex - clonesCount) % totalOriginalSlides;
     if (virtualIndex < 0) virtualIndex += totalOriginalSlides;
     let currentActiveNumber = virtualIndex + slidesPerView;
     if (currentActiveNumber > totalOriginalSlides) {
@@ -168,43 +180,37 @@ function initTeamSlider(burgerClass, menuClass) {
     }
     countCurrent.textContent = currentActiveNumber;
   }
-  track.addEventListener("transitionend", () => {
+  function handleTransitionEnd() {
     isTransitioning = false;
     const slideWidth = 100 / slidesPerView;
-    if (currentIndex >= allSlides.length - maxSlidesPerView) {
+    const totalWithClones = allSlides.length;
+    if (currentIndex >= totalWithClones - clonesCount) {
       track.style.transition = "none";
-      currentIndex = maxSlidesPerView;
+      currentIndex = clonesCount;
       track.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
     }
-    if (currentIndex <= maxSlidesPerView - slidesPerView) {
+    if (currentIndex <= clonesCount - slidesPerView) {
       track.style.transition = "none";
-      currentIndex = allSlides.length - maxSlidesPerView - slidesPerView;
+      currentIndex = totalWithClones - clonesCount - slidesPerView;
       track.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
     }
-  });
-  if (btnNext) {
-    btnNext.addEventListener("click", () => {
-      if (isTransitioning) return;
-      moveSlider(currentIndex + 1);
-      startAutoPlay();
-    });
-  }
-  if (btnPrev) {
-    btnPrev.addEventListener("click", () => {
-      if (isTransitioning) return;
-      moveSlider(currentIndex - 1);
-      startAutoPlay();
-    });
   }
   function startAutoPlay() {
     stopAutoPlay();
     autoPlayTimer = setInterval(() => {
-      moveSlider(currentIndex + 1);
+      if (!isTransitioning) moveSlider(currentIndex + 1);
     }, 4e3);
   }
   function stopAutoPlay() {
     if (autoPlayTimer) clearInterval(autoPlayTimer);
   }
+  rebuildSlider();
+  window.addEventListener("resize", () => {
+    updateBreakpoints();
+  });
+  track.addEventListener("transitionend", handleTransitionEnd);
+  if (btnNext) btnNext.addEventListener("click", () => moveSlider(currentIndex + 1));
+  if (btnPrev) btnPrev.addEventListener("click", () => moveSlider(currentIndex - 1));
   startAutoPlay();
   const viewport = document.querySelector(".team-section__viewport");
   if (viewport) {
